@@ -1,0 +1,1479 @@
+{
+	"info": {
+		"_postman_id": "2fdaad02-c965-450d-a757-b3f2185943c0",
+		"name": "Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "producer",
+			"item": [
+				{
+					"name": "get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actors array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movies array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actor\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actor).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Brad Pitt\",\n\t\"gender\":\"male\",\n\t\"age\":42,\n\t\"movies\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movie\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movie).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Star Wars\",\n\t\"release\":\"2020/03/05\",\n\t\"actors\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actor\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actor).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Johnny Depp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movie\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movie).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Lord of the Rings\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"deleted right element\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.deleted).eq(\"1\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"deleted right element\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.deleted).eq(\"1\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik56azJRak0yTkRjeE56Z3pOVGMxTlVWQ09VWXhOamt5TkVVeVFVWkVNVGsyTnpRMU1qQTVRdyJ9.eyJpc3MiOiJodHRwczovL2VhY2cuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNjFiN2VmMjllMWUwMGQzZTc3OTI2YiIsImF1ZCI6ImNhcHN0b25lIHByb3llY3QiLCJpYXQiOjE1ODQ0MTgyMzgsImV4cCI6MTU4NDUwNDYzOCwiYXpwIjoiQ1JzSzVydTUyRnVxT2Z6VTU5YmQ1Z3VRWWQyUm1wN1UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.MFSnfxqsdmqQmKiPWFo-TEWIK-1ygLHLgMWQnyQ9wpdWHy0GVxpY40J-NA1mEZWzEgXheHylEyqeakTCD1H3pUolM79O0YQXEfDYATdNhCKWSBnB5tS8c2ncVFTP65PyWTP9tTrM8hjrwwqgKDEayUgUVSB6g5Fuo5sfPBAyYdx2IevwkLoY_MebLYdS5d5osFifoZlgRv-WYaMk33J7p90ERkp0I_mGyz2s8RyItkbZFBrdyJUzJsjXeHUmVzHWSwkmAIPBduYukYmW8dWkWgO11vW8FFKCLjTAj5eTVYJ0C1mbdHJihOBgHdiigwIdW9HSL2BGE8X7LSQ5oNXOEQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3234179c-a5d5-401a-a14e-0661eba020d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b798e528-ff2e-44a8-a0d4-f85fa8c966fd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "director",
+			"item": [
+				{
+					"name": "get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actors array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movies array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actor\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actor).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Brad Pitt\",\n\t\"gender\":\"male\",\n\t\"age\":42,\n\t\"movies\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Star Wars\",\n\t\"release\":\"2020/03/05\",\n\t\"actors\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actor\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actor).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Johnny Depp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Lord of the Rings\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"deleted right element\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.deleted).eq(\"1\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik56azJRak0yTkRjeE56Z3pOVGMxTlVWQ09VWXhOamt5TkVVeVFVWkVNVGsyTnpRMU1qQTVRdyJ9.eyJpc3MiOiJodHRwczovL2VhY2cuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNjFiODNmMjViMmU2MGQzYjc3ZDRmOSIsImF1ZCI6ImNhcHN0b25lIHByb3llY3QiLCJpYXQiOjE1ODQ0MTgyOTgsImV4cCI6MTU4NDUwNDY5OCwiYXpwIjoiQ1JzSzVydTUyRnVxT2Z6VTU5YmQ1Z3VRWWQyUm1wN1UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBvc3Q6YWN0b3JzIl19.mCRFIb5eBca1ZTXXv_Adr9WA7ZKR5wnQ5_Cs9287Nv4FocuHyOWpYTP0Y7JJ2j6zumQ0nNKlM-aYkOdeDsr379F-DS0teiOopmqCoNlKcz1a_Ast4eMQoQqmGFeRG3yC13jtTV4cZGi00Luchj_XaxBPB8b_lGJnQjnT7A0WVarFDVc56QEdutbSnR21hESgCjUvnQHaVOtEPV_JOKaRrUmHCFiGtSmHHRfScJQBFYcNkP_CZJijcT9EIhyAfpHCzug1gg8Ss0KsFpECtWqBxAFb5wjKshNbi-_b5q1cIZNA2dm6JCEScsom-w-nq2vcxY1WgBpLOgTSNXlZkcQiSw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3234179c-a5d5-401a-a14e-0661eba020d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b798e528-ff2e-44a8-a0d4-f85fa8c966fd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "assistant",
+			"item": [
+				{
+					"name": "get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains actors array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movies array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Brad Pitt\",\n\t\"gender\":\"male\",\n\t\"age\":42,\n\t\"movies\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Star Wars\",\n\t\"release\":\"2020/03/05\",\n\t\"actors\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Johnny Depp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Lord of the Rings\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik56azJRak0yTkRjeE56Z3pOVGMxTlVWQ09VWXhOamt5TkVVeVFVWkVNVGsyTnpRMU1qQTVRdyJ9.eyJpc3MiOiJodHRwczovL2VhY2cuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNzA0MjIyMTI2ZDZhMGMzMTM2OGI4NyIsImF1ZCI6ImNhcHN0b25lIHByb3llY3QiLCJpYXQiOjE1ODQ0MTgzNjEsImV4cCI6MTU4NDUwNDc2MSwiYXpwIjoiQ1JzSzVydTUyRnVxT2Z6VTU5YmQ1Z3VRWWQyUm1wN1UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.SF7T8k9oL1_3YyLwuapIyt08uvNABFLu1nEbBfzPshDopSB9Yh6iEW4D-qAzMdGHBI9M4LnbrND8-XwgUiWXqpPhoCpalFYCB6HimvT4UewM32fniriWagZM-RoqBmslTXCiian8K9Q_n-IAKRFKWohl2BGGJSSSITll_TWhigzQR_KrqfbBPk0DdVLqDagm6wk4WhWFcim19hoDQ3P5bZjExviM8PSIEWL3buIyDashU-2dpQqAQopTcnHfYXYwgD_UtcHXZ4jfubRvGzA0uHyEit9rGQe-AEt_Hw0bZf48pSMseljRSBoZPbS3DW5fLQbv3S1LNRIN-olhZx8N5w",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3234179c-a5d5-401a-a14e-0661eba020d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b798e528-ff2e-44a8-a0d4-f85fa8c966fd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "general",
+			"item": [
+				{
+					"name": "get actors denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get movies denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81538255-14d2-4e4d-a52c-e0a72795906b",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Brad Pitt\",\n\t\"gender\":\"male\",\n\t\"age\":42,\n\t\"movies\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6501140a-aeee-4872-873b-b04bc3f59e40",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Star Wars\",\n\t\"release\":\"2020/03/05\",\n\t\"actors\":[],\n\t\"id\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Johnny Depp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83e69911-3a26-4987-8efb-c64d4fd5572a",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Lord of the Rings\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete actor denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/actors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie denied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacd7243-e952-457b-b93b-50b5bd411914",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3234179c-a5d5-401a-a14e-0661eba020d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b798e528-ff2e-44a8-a0d4-f85fa8c966fd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
