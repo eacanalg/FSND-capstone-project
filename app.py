@@ -23,7 +23,7 @@ def create_app(test_config=None):
   app = Flask(__name__)
   CORS(app)
   setup_db(app)
-  migrate = Migrate(app,db)
+  #migrate = Migrate(app,db)
   
   # GET Methods
   # returns a success message and a list of desired class.
@@ -180,8 +180,12 @@ def create_app(test_config=None):
         })
     except:
         abort(422)
+    
+  @app.route('/')
+  def main_page():
+    return "please use one of the implemented endpoints"
 
-  # Error handlers.s
+  # Error handlers
   @app.errorhandler(422)
   def unprocessable(error):
     return jsonify({
@@ -224,12 +228,12 @@ def create_app(test_config=None):
 
   return app
 
-APP = create_app()
+app = create_app()
 
 
 
 if __name__ == '__main__':
-    APP.run(host='0.0.0.0', port=8080, debug=True)
+    app.run()
 
-    #For local host
-    #APP.run(debug=True)
+    #For debug host
+    #app.run(debug=True)

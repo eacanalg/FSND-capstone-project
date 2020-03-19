@@ -29,7 +29,7 @@ Main file where all the endpoints and error handlers of the api are found. Is th
 
 ### test_app.py
 
-A file containing a set of 26 unittest tests to guarantee the correct operation of all the end points and correct interactions witth the roles and permissions. The test must run without mistakes. The same series of test are included in a postman collection which can also be used by the user. Test_app.py is directly linked with the aplication, so it can be executed from any container or localhost. In the case of postman the url must be specified in each request. Default url in postman corresponds to a localhost.
+A file containing a set of 26 unittest tests to guarantee the correct operation of all the end points and correct interactions witth the roles and permissions. The test must run without mistakes. The same series of test are included in a postman collection which can also be used by the user. Test_app.py is directly linked with the aplication, so it can be executed from any container or localhost. In the case of postman the url must be specified in each request. Default url in postman corresponds to the deployed hosting url (see section Hosting).
 
 ## Running locally
 
